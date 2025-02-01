@@ -1,5 +1,5 @@
 flask
 oauth
-flask authlib
+flask-authlib
 gunicorn
 requests
