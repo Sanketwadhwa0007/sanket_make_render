@@ -1,6 +1,5 @@
 flask
-oauthlib
 oauth
+flask authlib
 gunicorn
 requests
-python-dotenv
