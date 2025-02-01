@@ -16,6 +16,6 @@ print(response.status_code)
 print(response.json())
 
 
-url = "https://sanket-make-render.onrender.com/auth/facebook/callback"
+url = "https://sanket-make-render.onrender.com/auth/facebook"
 response = requests.post(url)
 print(response)
