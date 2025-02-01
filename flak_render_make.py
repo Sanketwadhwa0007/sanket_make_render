@@ -76,7 +76,7 @@ def receive_data():
     return jsonify({"received_data": data})
 
 # Facebook OAuth Callback
-@app.route("/auth/facebook")
+@app.route("/auth/facebook", methods=["POST"])
 def facebook_login():
     # Redirect the user to Facebook's OAuth authorization page
     redirect_uri = url_for('facebook_callback', _external=True)
