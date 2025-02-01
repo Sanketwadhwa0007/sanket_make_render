@@ -56,6 +56,13 @@ def receive_data():
     data = request.json  # Get JSON data
     return jsonify({"received_data": data})
 
+# Facebook OAuth Callback
+@app.route("/auth/facebook/callback")
+def facebook_callback():
+    token = oauth.facebook.authorize_access_token()
+    user_info = oauth.facebook.get("https://graph.facebook.com/me?fields=id,name,email").json()
+    return f"Hello, {user_info['name']}!"
+
 # Run the Flask app
 if __name__ == "__main__":
     app.run(debug=True)
