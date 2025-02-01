@@ -22,7 +22,7 @@
 #     app.run(debug=True)
 from flask import Flask, request, jsonify
 import os
-from oauth import oauth
+# import oauth
 from flask import Flask, redirect, url_for
 from authlib.integrations.flask_client import OAuth
 # import oauthlib
