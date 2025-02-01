@@ -23,7 +23,7 @@
 from flask import Flask, request, jsonify
 import os
 import oauth
-import oauthlib
+# import oauthlib
 app = Flask(__name__)
 
 # Folder to store uploaded files
@@ -58,7 +58,7 @@ def receive_data():
     return jsonify({"received_data": data})
 
 # Facebook OAuth Callback
-@app.route("/auth/facebook/callback")
+@app.route("/auth/facebook/callback", methods=["POST"])
 def facebook_callback():
     token = oauth.facebook.authorize_access_token()
     user_info = oauth.facebook.get("https://graph.facebook.com/me?fields=id,name,email").json()
