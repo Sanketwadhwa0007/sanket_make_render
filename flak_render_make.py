@@ -16,7 +16,7 @@ def run_code():
         return jsonify({"message": "Data received", "data": data})
     
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
