@@ -3,3 +3,4 @@ Oauth
 flask-authlib
 gunicorn
 requests
+authlib
