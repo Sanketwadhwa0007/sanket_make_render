@@ -22,9 +22,27 @@
 #     app.run(debug=True)
 from flask import Flask, request, jsonify
 import os
-import oauth
+from oauth import oauth
+from flask import Flask, redirect, url_for
+from authlib.integrations.flask_client import OAuth
 # import oauthlib
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+oauth = OAuth(app)
+
+# Set up Facebook OAuth
+facebook = oauth.register(
+    'facebook',
+    client_id='your_client_id',
+    client_secret='your_client_secret',
+    authorize_url='https://www.facebook.com/v12.0/dialog/oauth',
+    authorize_params=None,
+    access_token_url='https://graph.facebook.com/v12.0/oauth/access_token',
+    access_token_params=None,
+    refresh_token_url=None,
+    client_kwargs={'scope': 'email'},
+)
+
 
 # Folder to store uploaded files
 UPLOAD_FOLDER = "uploads"
@@ -62,7 +80,7 @@ def receive_data():
 def facebook_callback():
     token = oauth.facebook.authorize_access_token()
     user_info = oauth.facebook.get("https://graph.facebook.com/me?fields=id,name,email").json()
-    return f"Hello, {user_info['name']}!"
+    return jsonify({"sanket":"wad"})
 
 # Run the Flask app
 if __name__ == "__main__":
