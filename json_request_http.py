@@ -1,6 +1,6 @@
 import requests
 
-url = "https://sanket-make-render.onrender.com/data"
+url = "https://sanket-make-render.onrender.com/data/images"
 data = {
     "title": "Hello World",
     "body": "This is a test post",
@@ -13,7 +13,7 @@ response = requests.post(url, json=data, headers=headers)
 
 
 print(response.status_code)
-print(response.json())
+print(response.text)
 
 
 # url = "https://sanket-make-render.onrender.com/data"

@@ -78,7 +78,7 @@ def hello():
 @app.route("/data/images", methods=["POST"])
 def receive_data():
     # QUERY = "data"
-    data = request.json  # Get JSON data
+    # data = request.json  # Get JSON data
     # QUERY = data
     
     # url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
