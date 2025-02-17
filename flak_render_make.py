@@ -79,14 +79,14 @@ def hello():
 def receive_data():
     # QUERY = "data"
     data = request.json  # Get JSON data
-    QUERY = data
+    # QUERY = data
     
-    url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
+    # url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
 
-    response = requests.get(url).json()
-    # print(response)
-    # Extract image URLs
-    image_urls = [item["link"] for item in response.get("items", [])]
+    # response = requests.get(url).json()
+    # # print(response)
+    # # Extract image URLs
+    # image_urls = [item["link"] for item in response.get("items", [])]
 
     # for url in image_urls:
         # print(url)
