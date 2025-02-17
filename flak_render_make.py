@@ -70,9 +70,9 @@ def hello():
     return jsonify({"message": "Hello, world!"})
 
 # 3️⃣ JSON Data Route
-@app.route("/data", methods=["POST"])
+@app.route("/data/images", methods=["POST"])
 def receive_data():
-    data = request.json  # Get JSON data
+    data = request  # Get JSON data
     image_urls = [item["link"] for item in data.get("items", [])]
     return jsonify({"received_data": image_urls})
 
