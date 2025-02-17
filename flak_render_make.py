@@ -75,6 +75,7 @@ def receive_data():
     data = request.json  # Get JSON data
     return jsonify({"received_data": data})
 
+
 # Facebook OAuth Callback
 @app.route("/auth/facebook", methods=["POST"])
 def facebook_login():
