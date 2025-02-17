@@ -73,7 +73,8 @@ def hello():
 @app.route("/data", methods=["POST"])
 def receive_data():
     data = request.json  # Get JSON data
-    return jsonify({"received_data": data})
+    image_urls = [item["link"] for item in data.get("items", [])]
+    return jsonify({"received_data": image_urls})
 
 # Facebook OAuth Callback
 @app.route("/auth/facebook", methods=["POST"])
