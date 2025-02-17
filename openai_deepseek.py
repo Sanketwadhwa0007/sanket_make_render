@@ -77,7 +77,7 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "tell me something about robotics",
+            "content": "what's the trending top topic on instagram? Give me one response in just one word ",
         }
     ],
     model="llama-3.3-70b-versatile",

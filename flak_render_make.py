@@ -70,10 +70,11 @@ def hello():
     return jsonify({"message": "Hello, world!"})
 
 # 3️⃣ JSON Data Route
-@app.route("/data", methods=["POST"])
+@app.route("/data/images", methods=["POST"])
 def receive_data():
     data = request.json  # Get JSON data
-    return jsonify({"received_data": data})
+    image_urls = [item["link"] for item in data.get("items", [])]
+    return jsonify({"received_data": image_urls})
 
 # Facebook OAuth Callback
 @app.route("/auth/facebook", methods=["POST"])
@@ -86,7 +87,7 @@ def facebook_login():
 def facebook_callback():
     token = oauth.facebook.authorize_access_token()
     user_info = oauth.facebook.get("https://graph.facebook.com/me?fields=id,name,email").json()
-    return jsonify({"sanket":"wad"})
+    return f"Hello, {user_info['name']}!"
 
 # Run the Flask app
 if __name__ == "__main__":
