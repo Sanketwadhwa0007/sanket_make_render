@@ -43,7 +43,7 @@ QUERY = "metgala"
 url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
 
 response = requests.get(url).json()
-# print(response)
+print(response)
 # Extract image URLs
 image_urls = [item["link"] for item in response.get("items", [])]
 
