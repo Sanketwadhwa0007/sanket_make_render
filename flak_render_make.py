@@ -44,6 +44,11 @@ facebook = oauth.register(
 )
 
 
+import requests
+
+API_KEY = "AIzaSyDBP7iBCcS04fxjKm8BozKn97T9pghBAFI"
+CX = "9643bcdb387014f7e"
+
 # Folder to store uploaded files
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -72,8 +77,20 @@ def hello():
 # 3️⃣ JSON Data Route
 @app.route("/data/images", methods=["POST"])
 def receive_data():
+    # QUERY = "data"
     data = request.json  # Get JSON data
-    return jsonify({"received_data": data})
+    QUERY = data
+        
+    url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
+
+    response = requests.get(url).json()
+    # print(response)
+    # Extract image URLs
+    image_urls = [item["link"] for item in response.get("items", [])]
+
+    # for url in image_urls:
+        # print(url)
+    return jsonify({"received_data": image_urls})
 
 
 # Facebook OAuth Callback
@@ -92,3 +109,21 @@ def facebook_callback():
 # Run the Flask app
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+# import requests
+
+# API_KEY = "AIzaSyDBP7iBCcS04fxjKm8BozKn97T9pghBAFI"
+# CX = "9643bcdb387014f7e"
+# # QUERY = "metgala"
+
+# url = f"https://www.googleapis.com/customsearch/v1?q={QUERY}&cx={CX}&searchType=image&key={API_KEY}"
+
+# response = requests.get(url).json()
+# # print(response)
+# # Extract image URLs
+# image_urls = [item["link"] for item in response.get("items", [])]
+
+# # for url in image_urls:
+# #     print(url)
